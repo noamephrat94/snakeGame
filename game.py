@@ -1,6 +1,5 @@
 import pygame
 import pygame_menu
-import sys
 from snake import *
 from food import *
 
@@ -56,7 +55,7 @@ def game_loop(level):
 
     myfont = pygame.font.SysFont("monospace", 16)
 
-    while (True):
+    while snake.alive:
         clock.tick(level)
         snake.handle_keys()
         drawGrid(surface)
@@ -71,6 +70,8 @@ def game_loop(level):
         text = myfont.render("Score {0}".format(snake.score), 1, (0, 0, 0))
         screen.blit(text, (5, 10))
         pygame.display.update()
+
+    game_over(snake.score)
 
 
 def main():
